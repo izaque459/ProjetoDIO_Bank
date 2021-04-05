@@ -1,0 +1,16 @@
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\bin\Debug\net5.0\DIO_Bank.exe
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\bin\Debug\net5.0\DIO_Bank.deps.json
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\bin\Debug\net5.0\DIO_Bank.runtimeconfig.json
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\bin\Debug\net5.0\DIO_Bank.runtimeconfig.dev.json
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\bin\Debug\net5.0\DIO_Bank.dll
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\bin\Debug\net5.0\ref\DIO_Bank.dll
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\bin\Debug\net5.0\DIO_Bank.pdb
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\obj\Debug\net5.0\DIO_Bank.csprojAssemblyReference.cache
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\obj\Debug\net5.0\DIO_Bank.GeneratedMSBuildEditorConfig.editorconfig
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\obj\Debug\net5.0\DIO_Bank.AssemblyInfoInputs.cache
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\obj\Debug\net5.0\DIO_Bank.AssemblyInfo.cs
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\obj\Debug\net5.0\DIO_Bank.csproj.CoreCompileInputs.cache
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\obj\Debug\net5.0\DIO_Bank.dll
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\obj\Debug\net5.0\ref\DIO_Bank.dll
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\obj\Debug\net5.0\DIO_Bank.pdb
+C:\ProjetosGit\BancoDigital\ProjetoDIO_Bank\DIO_Bank\obj\Debug\net5.0\DIO_Bank.genruntimeconfig.cache
