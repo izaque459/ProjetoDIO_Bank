@@ -6,9 +6,22 @@ namespace DIO_Bank
     {
         static void Main(string[] args)
         {
-            TipoContaCorrente contaCorrente = new TipoContaCorrente("Isaac",89.9,87.9);
-            contaCorrente.Exibe();
-            Console.WriteLine("Hello World!");
+            TipoContaCorrente contaIsaac = new TipoContaCorrente("Isaac",100.0,80.0);
+            TipoContaPoupanca contaPIsaac = new TipoContaPoupanca("Isaac",20.0,0.0);
+            TipoContaCorrente contaCalebe = new TipoContaCorrente("Calebe",2.0,7.0);
+            TipoContaPoupanca contaPCalebe = new TipoContaPoupanca("Calebe",800.0,0.0);
+            contaIsaac.Exibe();
+            contaIsaac.Depositar(200.0);
+            contaIsaac.Exibe();
+            contaCalebe.Exibe();
+            contaIsaac.Transferir(24.0,contaCalebe);
+            contaCalebe.Exibe();
+            contaIsaac.Exibe();
+            contaPIsaac.Exibe();
+            contaIsaac.Transferir(100.0,contaPIsaac);
+            contaIsaac.Exibe();
+            contaPIsaac.Exibe();
+
         }
     }
 }
