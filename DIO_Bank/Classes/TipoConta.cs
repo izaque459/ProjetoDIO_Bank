@@ -35,7 +35,7 @@ namespace DIO_Bank
         }
         public virtual bool Sacar(double valorSaque)
         {
-            if(this.Saldo > valorSaque)
+            if(this.Saldo >= valorSaque)
             {   
                 this.Saldo-=valorSaque;
                 return true;
@@ -53,14 +53,13 @@ namespace DIO_Bank
 
     public class TipoContaPoupanca : TipoConta
     {
-        private double valorLimite{get;set;}
+        private double valorLimite;
         private double taxas{get;set;}
-        private double taxaDebito{get;set;}
+        private double taxaDebito;
         public TipoContaPoupanca(TipoPessoa tipoPessoa, string nome, double saldo, double credito) : base(tipoPessoa,nome, saldo, credito)
         {
-            this.valorLimite = 300.0;
             this.taxas=0.0;
-            this.taxaDebito=0.05;
+            TipoContrato.ParaContaPoupanca(tipoPessoa, out this.taxaDebito, out this.valorLimite );
         }
 
         public override void Depositar(double valorDeposito)
@@ -70,7 +69,8 @@ namespace DIO_Bank
 
         public override void Transferir(double valorTransferencia,TipoConta Destino)
         {
-            base.Transferir(valorTransferencia,Destino);
+            if(valorTransferencia<=valorLimite)
+                base.Transferir(valorTransferencia,Destino);
         }
 
         public override bool Sacar(double valorSaque)
@@ -89,6 +89,9 @@ namespace DIO_Bank
                 this.taxas+=this.taxaDebito;
                 Saldo-=this.taxaDebito;
             }
+            else
+                Saldo-=this.taxaDebito;
+
 
         }
         public void Exibe()
@@ -101,14 +104,13 @@ namespace DIO_Bank
     {
         private double taxas{get;set;}
         
-        private double taxaDebito{get;set;}
-        private double taxaTransferencia{get;set;}
+        private double taxaDebito;
+        private double taxaTransferencia;
         
         public TipoContaCorrente(TipoPessoa tipoPessoa,string nome, double saldo, double credito) : base(tipoPessoa,nome, saldo, credito)
         {
             this.taxas=0.0;
-            this.taxaTransferencia=0.1;
-            this.taxaDebito=0.05;
+            TipoContrato.ParaContaCorrente(tipoPessoa, out this.taxaDebito, out taxaTransferencia);
         }
 
         public override void Depositar(double valorDeposito)
@@ -124,6 +126,9 @@ namespace DIO_Bank
                 this.taxas+= this.taxaTransferencia;
                 Saldo-= this.taxaTransferencia;
             }
+            else
+                Saldo-= this.taxaTransferencia;
+
         }
 
         public override bool Sacar(double valorSaque)
@@ -139,6 +144,9 @@ namespace DIO_Bank
                 taxas+=Saldo*taxaDebito;
                 Saldo-= Saldo*taxaDebito;
             }
+            else
+                Saldo-= taxaDebito;
+
         }
 
         public void Exibe()
