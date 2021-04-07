@@ -6,10 +6,10 @@ namespace DIO_Bank
     {
         static void Main(string[] args)
         {
-            TipoContaCorrente contaIsaac = new TipoContaCorrente("Isaac",100.0,80.0);
-            TipoContaPoupanca contaPIsaac = new TipoContaPoupanca("Isaac",30.0,30.0);
-            TipoContaCorrente contaCalebe = new TipoContaCorrente("Calebe",2.0,7.0);
-            TipoContaPoupanca contaPCalebe = new TipoContaPoupanca("Calebe",800.0,0.0);
+            TipoContaCorrente contaIsaac = new TipoContaCorrente(TipoPessoa.PessoaFisica,"Isaac",100.0,80.0);
+            TipoContaPoupanca contaPIsaac = new TipoContaPoupanca(TipoPessoa.PessoaFisica,"Isaac",30.0,30.0);
+            TipoContaCorrente contaCalebe = new TipoContaCorrente(TipoPessoa.PessoaFisica,"Calebe",2.0,7.0);
+            TipoContaPoupanca contaPCalebe = new TipoContaPoupanca(TipoPessoa.PessoaFisica,"Calebe",800.0,0.0);
             contaIsaac.Exibe();
             contaIsaac.Depositar(200.0);
             contaIsaac.Exibe();

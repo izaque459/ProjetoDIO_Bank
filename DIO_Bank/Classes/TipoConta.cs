@@ -8,9 +8,12 @@ namespace DIO_Bank
         protected double Saldo{ get; set;}
         protected  double Credito {get; set;}
 
-        public TipoConta(string nome, double saldo, double credito)
+        protected TipoPessoa TipoPessoa {get; set;}
+
+        public TipoConta(TipoPessoa tipoPessoa, string nome, double saldo, double credito)
         {
             this.Nome = nome;
+            this.TipoPessoa = tipoPessoa;
             if(saldo>0.0)
                 this.Saldo = saldo;
             else
@@ -53,7 +56,7 @@ namespace DIO_Bank
         private double valorLimite{get;set;}
         private double taxas{get;set;}
         private double taxaDebito{get;set;}
-        public TipoContaPoupanca(string nome, double saldo, double credito) : base(nome, saldo, credito)
+        public TipoContaPoupanca(TipoPessoa tipoPessoa, string nome, double saldo, double credito) : base(tipoPessoa,nome, saldo, credito)
         {
             this.valorLimite = 300.0;
             this.taxas=0.0;
@@ -101,7 +104,7 @@ namespace DIO_Bank
         private double taxaDebito{get;set;}
         private double taxaTransferencia{get;set;}
         
-        public TipoContaCorrente(string nome, double saldo, double credito) : base(nome, saldo, credito)
+        public TipoContaCorrente(TipoPessoa tipoPessoa,string nome, double saldo, double credito) : base(tipoPessoa,nome, saldo, credito)
         {
             this.taxas=0.0;
             this.taxaTransferencia=0.1;
