@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DIO_Bank
 {
     class Program
     {
+        static List<TipoConta> listaContas= new List<TipoConta>();
         static void Main(string[] args)
         {
             string opcaoUsuario = ObterOpcaoUsuario();
@@ -12,6 +14,9 @@ namespace DIO_Bank
             {
                 switch(opcaoUsuario)
                 {
+                    case "2":
+                        InserirConta();
+                        break;
                     case "C":
                         Console.Clear();
                         break;
@@ -23,6 +28,25 @@ namespace DIO_Bank
             Console.WriteLine("Obrigado por usar nossos serviços.");
             
         }
+
+        private static void InserirConta()
+        {
+            Console.WriteLine("Inserir nova conta:");
+            Console.Write("Digite 1 para Contrato de Conta Poupanca ou 2 para Contrato de Conta Corrente: ");
+            int entradaTipoContrato = Int32.Parse(Console.ReadLine());
+            Console.Write("Digite 0 para Pessoa Fisica ou 1 para Pessoa Juridica: ");
+            int entradaTipoPessoa = Int32.Parse(Console.ReadLine());
+            Console.Write("Digite o nome do cliente: ");
+            string entradaNome = Console.ReadLine();
+            Console.Write("Digite o saldo inicial: ");
+            double entradaSaldo = double.Parse(Console.ReadLine());
+            Console.Write("Digite o credito: ");
+            double entradaCredito = double.Parse(Console.ReadLine());
+
+            ContaFactory contaFactory = new ContaFactory();
+            TipoConta novaConta = contaFactory.GetConta(entradaTipoContrato,(TipoPessoa)entradaTipoPessoa, entradaNome, entradaSaldo, entradaCredito);
+            listaContas.Add(novaConta);
+            }
 
         private static string ObterOpcaoUsuario()
         {
