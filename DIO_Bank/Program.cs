@@ -5,7 +5,8 @@ namespace DIO_Bank
 {
     class Program
     {
-        static List<TipoConta> listaContas= new List<TipoConta>();
+        static List<TipoContaPoupanca> listaContasPoupancas = new List<TipoContaPoupanca>();
+        static List<TipoContaCorrente> listaContasCorrentes = new List<TipoContaCorrente>();
         static void Main(string[] args)
         {
             string opcaoUsuario = ObterOpcaoUsuario();
@@ -14,6 +15,9 @@ namespace DIO_Bank
             {
                 switch(opcaoUsuario)
                 {
+                    case "1":
+                        ListarContas();
+                        break;
                     case "2":
                         InserirConta();
                         break;
@@ -31,7 +35,10 @@ namespace DIO_Bank
 
         private static void InserirConta()
         {
-            Console.WriteLine("Inserir nova conta:");
+            TipoContaPoupanca conta1;
+            TipoContaCorrente conta2;
+
+            Console.WriteLine("=>Inserir nova conta");
             Console.Write("Digite 1 para Contrato de Conta Poupanca ou 2 para Contrato de Conta Corrente: ");
             int entradaTipoContrato = Int32.Parse(Console.ReadLine());
             Console.Write("Digite 0 para Pessoa Fisica ou 1 para Pessoa Juridica: ");
@@ -43,10 +50,50 @@ namespace DIO_Bank
             Console.Write("Digite o credito: ");
             double entradaCredito = double.Parse(Console.ReadLine());
 
-            ContaFactory contaFactory = new ContaFactory();
-            TipoConta novaConta = contaFactory.GetConta(entradaTipoContrato,(TipoPessoa)entradaTipoPessoa, entradaNome, entradaSaldo, entradaCredito);
-            listaContas.Add(novaConta);
+            if(entradaTipoContrato==1)
+            {
+                conta1 = new TipoContaPoupanca((TipoPessoa)entradaTipoPessoa,entradaNome,entradaSaldo,entradaCredito);
+                listaContasPoupancas.Add(conta1);
             }
+            else
+            {
+                conta2 = new TipoContaCorrente((TipoPessoa)entradaTipoPessoa,entradaNome,entradaSaldo,entradaCredito);
+                listaContasCorrentes.Add(conta2);
+            }
+        }
+
+        private static void ListarContas()
+        {
+                Console.WriteLine("=>Listar contas");
+                Console.WriteLine("  ");
+
+                if (listaContasPoupancas.Count == 0)
+                    Console.WriteLine("Nenhuma conta poupança cadastrada.");
+                else
+                    Console.WriteLine("Contas Poupanças Cadastradas: ");
+      
+
+                for (int i = 0; i < listaContasPoupancas.Count; i++)
+                {
+                    TipoContaPoupanca conta = listaContasPoupancas[i];
+                    Console.Write("#{0} - ", i);
+                    Console.WriteLine(conta);
+                }
+                
+                Console.WriteLine(" ");
+
+                if (listaContasCorrentes.Count == 0)
+                    Console.WriteLine("Nenhuma conta corrente cadastrada.");
+                else
+                    Console.WriteLine("Contas Correntes Cadastradas: ");
+
+                for (int j = 0; j < listaContasCorrentes.Count; j++)
+                {
+                    TipoContaCorrente conta = listaContasCorrentes[j];
+                    Console.Write("#{0} - ", j);
+                    Console.WriteLine(conta);
+                }
+        }
 
         private static string ObterOpcaoUsuario()
         {
@@ -64,7 +111,7 @@ namespace DIO_Bank
             Console.WriteLine("X - Sair");
 
             string opcaoUsuario = Console.ReadLine().ToUpper();
-            Console.WriteLine(" ");
+            Console.WriteLine($"Opcao do Usario: {opcaoUsuario} ");
             return opcaoUsuario;
         }
     }

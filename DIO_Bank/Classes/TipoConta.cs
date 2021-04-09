@@ -94,10 +94,18 @@ namespace DIO_Bank
 
 
         }
-        public void Exibe()
-        {
-            Console.WriteLine($"nome: {Nome}, saldo: {Saldo}, credito: {Credito},taxas: {taxas}, limite de saque {valorLimite}");
-        }
+
+        public override string ToString()
+		{
+            string retorno = null;
+            retorno += "Pessoa " + TipoPessoa + " | ";
+            retorno += "Nome " + Nome + " | ";
+            retorno += "Saldo " + Saldo + " | ";
+            retorno += "Crédito " + Credito + " | ";
+            retorno += "Taxas " + this.taxas + " | ";
+            retorno += "Limite de saque " + this.valorLimite;
+			return retorno;
+		}
     }
 
     public class TipoContaCorrente : TipoConta
@@ -149,9 +157,16 @@ namespace DIO_Bank
 
         }
 
-        public void Exibe()
-        {
-            Console.WriteLine($"nome: {Nome}, saldo: {Saldo}, credito: {Credito}, taxas: {taxas}");
-        }
+        public override string ToString()
+		{
+            string retorno = null;
+            retorno += "Pessoa " + TipoPessoa + " | ";
+            retorno += "Nome " + Nome + " | ";
+            retorno += "Saldo " + Saldo + " | ";
+            retorno += "Crédito " + Credito + " | ";
+            retorno += "Taxas " + this.taxas;
+			return retorno;
+		}
+        
     }
 }
