@@ -21,6 +21,9 @@ namespace DIO_Bank
                     case "2":
                         InserirConta();
                         break;
+                    case "3":
+                        Transferir();
+                        break;
                     case "4":
                         Sacar();
                         break;
@@ -95,9 +98,40 @@ namespace DIO_Bank
             }
 		}
 
+        private static void Transferir()
+        {
+            Console.WriteLine("=>Transferencia");
+            Console.WriteLine("Digite o valor a ser transferido:");
+            double valorTransferido = double.Parse(Console.ReadLine());
+            Console.WriteLine("Escolha 1 para conta corrente ou 2 para conta poupança como conta de origem: ");
+            int escolhaContaOrigem = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Escolha 1 para conta corrente ou 2 para conta poupança como conta de destino: ");
+            int escolhaContaDestino = Int32.Parse(Console.ReadLine());
+            
+            Console.WriteLine("Digite o numero da conta origem:");
+            int nOrigem = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Digite o numero da conta destino:");
+            int nDestino = Int32.Parse(Console.ReadLine());
+            if(escolhaContaOrigem==1)
+            {
+                if(escolhaContaDestino==1)
+                    listaContasCorrentes[nOrigem].Transferir(valorTransferido,listaContasCorrentes[nDestino]);
+                else
+                    listaContasCorrentes[nOrigem].Transferir(valorTransferido,listaContasPoupancas[nDestino]);
+            }
+            else
+            {
+                if(escolhaContaDestino==1)
+                    listaContasPoupancas[nOrigem].Transferir(valorTransferido,listaContasCorrentes[nDestino]);
+                else
+                    listaContasPoupancas[nOrigem].Transferir(valorTransferido,listaContasPoupancas[nDestino]);
+            }
+
+        }
+
         private static void UsoCredito()
         {
-            Console.WriteLine("=>Usar credito:");
+            Console.WriteLine("=>Usar credito");
             Console.WriteLine("Escolha 1 para conta poupança ou 2 para conta corrente: ");
             int escolhaTipoConta = int.Parse(Console.ReadLine());
 			if(escolhaTipoConta==1)
