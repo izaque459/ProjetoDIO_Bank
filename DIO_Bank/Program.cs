@@ -21,6 +21,12 @@ namespace DIO_Bank
                     case "2":
                         InserirConta();
                         break;
+                    case "4":
+                        Sacar();
+                        break;
+                    case "5":
+                        Depositar();
+                        break;
                     case "C":
                         Console.Clear();
                         break;
@@ -32,6 +38,59 @@ namespace DIO_Bank
             Console.WriteLine("Obrigado por usar nossos serviços.");
             
         }
+
+        private static void Sacar()
+		{
+            Console.WriteLine("=>Sacar ");
+            Console.WriteLine("Escolhao 1 para conta poupança ou 2 para conta corrente: ");
+            int escolhaTipoConta = int.Parse(Console.ReadLine());
+            if(escolhaTipoConta==1)
+			{
+                Console.Write("Digite o número da conta: ");
+			    int indiceConta = int.Parse(Console.ReadLine());
+
+			    Console.Write("Digite o valor a ser sacado: ");
+			    double valorSaque = double.Parse(Console.ReadLine());
+
+                listaContasPoupancas[indiceConta].Sacar(valorSaque);
+            }
+            else
+            {
+                Console.Write("Digite o número da conta: ");
+			    int indiceConta = int.Parse(Console.ReadLine());
+
+			    Console.Write("Digite o valor a ser sacado: ");
+			    double valorSaque = double.Parse(Console.ReadLine());
+
+                listaContasCorrentes[indiceConta].Sacar(valorSaque);
+            }
+		}
+        private static void Depositar()
+		{
+            Console.WriteLine("=>Depositar");
+            Console.WriteLine("Escolha 1 para conta poupança ou 2 para conta corrente: ");
+            int escolhaTipoConta = int.Parse(Console.ReadLine());
+			if(escolhaTipoConta==1)
+            {
+                Console.Write("Digite o número da conta: ");
+			    int indiceConta = int.Parse(Console.ReadLine());
+
+			    Console.Write("Digite o valor a ser depositado: ");
+			    double valorDeposito = double.Parse(Console.ReadLine());
+
+                listaContasPoupancas[indiceConta].Depositar(valorDeposito);
+            }
+            else
+            {
+                Console.Write("Digite o número da conta: ");
+			    int indiceConta = int.Parse(Console.ReadLine());
+
+			    Console.Write("Digite o valor a ser depositado: ");
+			    double valorDeposito = double.Parse(Console.ReadLine());
+
+                listaContasCorrentes[indiceConta].Depositar(valorDeposito);
+            }
+		}
 
         private static void InserirConta()
         {
