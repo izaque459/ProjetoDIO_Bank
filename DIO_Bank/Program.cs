@@ -27,6 +27,9 @@ namespace DIO_Bank
                     case "5":
                         Depositar();
                         break;
+                    case "6":
+                        UsoCredito();
+                        break;
                     case "C":
                         Console.Clear();
                         break;
@@ -91,6 +94,33 @@ namespace DIO_Bank
                 listaContasCorrentes[indiceConta].Depositar(valorDeposito);
             }
 		}
+
+        private static void UsoCredito()
+        {
+            Console.WriteLine("=>Usar credito:");
+            Console.WriteLine("Escolha 1 para conta poupança ou 2 para conta corrente: ");
+            int escolhaTipoConta = int.Parse(Console.ReadLine());
+			if(escolhaTipoConta==1)
+            {
+                Console.Write("Digite o número da conta: ");
+			    int indiceConta = int.Parse(Console.ReadLine());
+
+			    Console.Write("Digite o valor a ser debitado: ");
+			    double valorDebito = double.Parse(Console.ReadLine());
+
+                listaContasPoupancas[indiceConta].Debitar(valorDebito);
+            }
+            else
+            {
+                Console.Write("Digite o número da conta: ");
+			    int indiceConta = int.Parse(Console.ReadLine());
+
+			    Console.Write("Digite o valor a ser debitado: ");
+			    double valorDebito = double.Parse(Console.ReadLine());
+
+                listaContasCorrentes[indiceConta].Debitar(valorDebito);
+            }
+        }
 
         private static void InserirConta()
         {

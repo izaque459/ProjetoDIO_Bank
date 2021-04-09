@@ -7,7 +7,7 @@ namespace DIO_Bank
             switch(tipoPessoa)
             {
                 case TipoPessoa.Fisica:
-                    taxaDebito = 0.05;
+                    taxaDebito = 0.005;
                     taxaTransferencia = 0.1;
                     break;
                 case TipoPessoa.Juridica:
